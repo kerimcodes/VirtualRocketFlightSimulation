@@ -1,3 +1,11 @@
+/*
+ * Project: Virtual Rocket Flight Computer Simulation
+ * Author: Kerim Erduran
+ * Date: Feb 2026
+ * Description: 
+ * Simulates a 1-DOF rocket flight physics, sensor noise/bias, 
+ * and GNC algorithms (Filtering & State Machine).
+ */
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
@@ -83,6 +91,10 @@ void createData(const char* path,int n)
         float fnumberx = (float)random_numberx / 100 -1 ;
         float fnumbery = (float)random_numbery / 100 - 1;
         float fnumberz = (float)random_numberz / 100;
+        
+        // --- SENSOR MODELING ---
+        // Real sensor reads (True Acceleration + Gravity) due to internal mass.
+        // Added random noise to simulate MEMS sensor characteristics.
 
         float noise_z = (float)random_numberz / 100 - 9.81;
 
@@ -139,6 +151,10 @@ void createData(const char* path,int n)
         sensor[i].pos_x = px;
         sensor[i].pos_y = py;
         sensor[i].pos_z = pz;
+
+        // --- FLIGHT STATE MACHINE (FSM) ---
+        // Determines the flight phase based on altitude and velocity.
+        // Transition Logic: IDLE -> ASCENT -> DESCENT -> LANDED
 
         if (current_state == IDLE && pz > 0.1)
             current_state = ASCENT;
