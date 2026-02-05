@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-path = "C:\\software\\C_Python_Projects\\VirtualAccelerometerDataLine\\data\\sensor.csv"
+path = "C:\\software\\C_Python_Projects\\VirtualFlightSimulation\\data\\sensor.csv"
 
 try:
     df = pd.read_csv(path)
@@ -71,5 +71,5 @@ axs[2, 2].grid(True, linestyle='--', alpha=0.6)
 axs[2, 2].set_title("Altitude & Flight States")
 
 plt.tight_layout()
-plt.savefig(r"C:\software\C_Python_Projects\VirtualAccelerometerDataLine\images\flight_analysis.png")
+plt.savefig(r"C:\software\C_Python_Projects\VirtualFlightSimulation\images\flight_analysis.png")
 plt.show()
