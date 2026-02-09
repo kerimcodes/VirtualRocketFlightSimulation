@@ -32,7 +32,7 @@ void adddataTofile(const char* path,data *sensor, int n)
 {
     FILE *fptr = fopen(path, "w");
     if (fptr == NULL)
-        printf("File open operation is unsuccessfull");
+        printf("File open operation is unsuccessfull\n");
     else {
         fprintf(fptr,"Time,Ax,FilteredAx,Vx,Px,Ay,FilteredAy,Vy,Py,Az,FilteredAz,Vz,Pz,State\n");
         for (int i = 0; i <= n;i++)
@@ -80,8 +80,6 @@ void createData(const char* path,int n)
             vx = 0;
             vy = 0;
             vz = 0;
-            px = 0;
-            py = 0;
             pz = 0;
         }
         int random_numberx = rand() % 200;
@@ -175,7 +173,7 @@ void createData(const char* path,int n)
 }
 int main()
 {
-    const char *path = "C:\\software\\C_Python_Projects\\VirtualAccelerometerDataLine\\file\\sensor.csv";
+    const char *path = "C:\\software\\C_Python_Projects\\VirtualFlightSimulation\\data\\sensor.csv";
 
     createData(path, 1000);
     return 0;
