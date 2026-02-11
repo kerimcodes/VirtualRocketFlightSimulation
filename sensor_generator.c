@@ -6,6 +6,7 @@
  * Simulates a 1-DOF rocket flight physics, sensor noise/bias, 
  * and GNC algorithms (Filtering & State Machine).
  */
+
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
@@ -27,6 +28,18 @@ typedef struct datas
     float filtered_acc_x, filtered_acc_y, filtered_acc_z;
     int state;
 } data;
+
+
+void adddataTofile(const char *path, data *sensor, int n);
+void createData(const char *path, int n);
+
+int main()
+{
+    const char *path = "C:\\software\\C_Python_Projects\\VirtualFlightSimulation\\data\\sensor.csv";
+
+    createData(path, 1000);
+    return 0;
+}
 
 void adddataTofile(const char* path,data *sensor, int n)
 {
@@ -170,11 +183,4 @@ void createData(const char* path,int n)
 
     printf("Datas are added");
     }
-}
-int main()
-{
-    const char *path = "C:\\software\\C_Python_Projects\\VirtualFlightSimulation\\data\\sensor.csv";
-
-    createData(path, 1000);
-    return 0;
 }
